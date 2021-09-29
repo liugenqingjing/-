@@ -1,0 +1,42 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-09-29 16:52:55
+ * @LastEditTime: 2021-09-29 17:02:19
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>预编译习题</title>
+  </head>
+  <body></body>
+  <script>
+    function fn(a, c) {
+      console.log(a); //function a(){}
+      var a = 123;
+      console.log(a); //123
+      console.log(c); //function c(){}
+      function a() {}
+      if (false) {
+        var d = 678;
+      }
+      console.log(d); //undefined
+      console.log(b); //undefined
+      var b = function () {};
+      console.log(b); //function (){}
+      function c() {}
+      console.log(c); //function c(){}
+    }
+    fn(1, 2);
+
+    //预编译:
+    //作用域的创建阶段 预编译的阶段
+    //预编译的时候做了那些事情
+    //js的变量对象 AO对象 供js引擎自己去访问的
+    //1.创建了ao对象 2.找形参和变量的声明 作为ao对象的属性名 不赋值，默认为undefined 3实参和形参相统一 4找函数声明，会覆盖相同的变量声明。
+  </script>
+</html>
