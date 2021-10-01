@@ -1,0 +1,30 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-01 19:57:58
+ * @LastEditTime: 2021-10-01 19:59:11
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>简单闭包</title>
+  </head>
+  <body></body>
+  <script>
+    function a() {
+      var aa = 123;
+      function b() {
+        var bb = 234;
+        console.log(aa); //可不可以输出123呢？
+      }
+      return b;
+    }
+    var res = a();
+
+    res();
+  </script>
+</html>
