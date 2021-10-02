@@ -1,0 +1,36 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-02 21:18:54
+ * @LastEditTime: 2021-10-02 21:31:21
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6类实现单例模式</title>
+  </head>
+  <body></body>
+  <script>
+    class School {
+      constructor(name, age, hobby) {
+        this.name = name;
+        this.age = age;
+        this.hobby = hobby;
+      }
+      static getInstance(name, age, hobby) {
+        if (!this.instance) {
+          this.instance = new School(name, age, hobby);
+        }
+        return this.instance;
+      }
+    }
+
+    let xiaohe = School.getInstance("小何", 19, ["java", "css", "Vue"]);
+    let xiaoyao = School.getInstance("小瑶", 19, ["Python", "c"]);
+    console.log(xiaohe === xiaoyao);
+  </script>
+</html>
