@@ -1,0 +1,39 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-03 21:01:22
+ * @LastEditTime: 2021-10-03 21:09:37
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //策略模式指的是定义一系 列的算法，把它们一个个封装起来。
+    //将不变的部分和变化的部分隔开是每个设计模式的主题，
+    //策略模式也不例外，策略模式的目的就是将算法的使用与算法的实现分离开来。
+    let salaryFnc = {
+      S: function (salary) {
+        return salary * 4;
+      },
+      A: function (salary) {
+        return salary * 3;
+      },
+      B: function (salary) {
+        return salary * 2;
+      },
+    };
+
+    let rum_salary = function (level, salary) {
+      return salaryFnc[level](salary);
+    };
+
+    console.log(rum_salary("S", 2000));
+  </script>
+</html>

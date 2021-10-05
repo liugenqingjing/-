@@ -1,0 +1,47 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-05 21:35:09
+ * @LastEditTime: 2021-10-05 21:41:29
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BFC</title>
+    <style>
+      /* 如何创建BFC：
+      1.float的值不是none
+      2.position的值不是static或者relative
+      3.display的值是inline-block,flex或者inline-flex
+      4.overflow:hidden;（最优） */
+
+      /* BFC的作用:
+      1.BFC可以取消盒子margin塌陷
+      2.BFC可以阻止元素被浮动元素覆盖 */
+      .father {
+        width: 600px;
+        /* float: left; */
+        /* position: absolute; */
+        /* display: flex; */
+        overflow: hidden;
+      }
+      .son {
+        width: 200px;
+        height: 300px;
+        background-color: aqua;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="son"></div>
+      <div class="son"></div>
+      <div class="son"></div>
+    </div>
+  </body>
+</html>
