@@ -1,0 +1,62 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-06 16:50:23
+ * @LastEditTime: 2021-10-06 17:04:35
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>call-bind-apply的理解</title>
+  </head>
+  <body></body>
+  <script>
+    /*
+     call apply bind的理解 和存在的意义
+     1. 改变函数执行时的上下文 改变this的指向
+     */
+    let obj = {
+      name: "蔡徐坤",
+    };
+    function Child(name) {
+      this.name = name;
+    }
+
+    Child.prototype = {
+      constructor: Child,
+      showName: function () {
+        console.log(this.name);
+      },
+    };
+
+    let child = new Child("bkpp");
+    child.showName(); //bkpp
+
+    child.showName.call(obj);
+    child.showName.apply(obj);
+    let bind = child.showName.bind(obj);
+    bind();
+
+    /*
+     call()和apply() 与 bind() 的区别:
+     1. call()和apply()会立即执行，而bind()不会立即执行
+     */
+
+    /*
+     call()和apply()的区别:
+     call() 方法接受的是一个参数列表，而 apply() 方
+     法接受的是一个包含多个参数的数组。
+     需求: 找到数组里面的最大值
+     */
+    let array = [1, 2, 3, 4, 6, 9, 10, 19, 100];
+
+    console.log(Math.max.call(null, (1, 2, 3, 4, 6, 9, 10, 19, 100))); //100
+    console.log(Math.max.call(null, array)); //NaN
+    console.log(Math.max.call(null, ...array)); //100
+    console.log(Math.max.apply(null, array)); //100
+  </script>
+</html>

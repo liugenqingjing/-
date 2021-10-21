@@ -1,0 +1,29 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-06 10:24:08
+ * @LastEditTime: 2021-10-06 10:26:36
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reduce数组去重</title>
+  </head>
+  <body></body>
+  <script>
+    //3. 数组去重;
+    const array = [1, 1, 2, 5, 9, 9, 7, 8, 5, 4, 7];
+    const res = array.reduce((prev, cur) => {
+      if (!prev.includes(cur)) {
+        return prev.concat(cur);
+      } else {
+        return prev;
+      }
+    }, []);
+    console.log(res);
+  </script>
+</html>
