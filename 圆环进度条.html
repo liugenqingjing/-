@@ -1,0 +1,107 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-21 15:01:02
+ * @LastEditTime: 2021-10-21 18:44:07
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圆环进度条</title>
+    <style>
+      .container {
+        display: flex;
+        width: 176px;
+        height: 176px;
+        position: relative;
+      }
+      .content {
+        width: 88px;
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+      }
+      @keyframes circle_right {
+        0% {
+          transform: rotate(-135deg);
+        }
+        50%,
+        100% {
+          transform: rotate(45deg);
+        }
+      }
+      .rightCircle {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border: 8px solid transparent;
+        border-radius: 50%;
+        border-right: 8px solid #38b99b;
+        border-top: 8px solid #38b99b;
+        transform: rotate(-135deg);
+        top: 0;
+        right: 0;
+        animation: circle_right 5s linear infinite;
+      }
+      @keyframes circle_left {
+        0%,
+        50% {
+          transform: rotate(-135deg);
+        }
+        100% {
+          transform: rotate(45deg);
+        }
+      }
+      .leftCircle {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border: 8px solid transparent;
+        border-radius: 50%;
+        border-right: 8px solid #38b99b;
+        border-top: 8px solid #38b99b;
+        transform: rotate(135deg);
+        top: 0;
+        left: 0;
+        animation: circle_left 5s linear infinite;
+      }
+      .text {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 左边半圆环 -->
+      <div class="content">
+        <div class="leftCircle"></div>
+      </div>
+      <div class="text">
+        <h3>0</h3>
+      </div>
+      <!-- 右边半圆环 -->
+      <div class="content">
+        <div class="rightCircle"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let time = document.querySelector("h3");
+    let count = 0;
+    setInterval(() => {
+      if (count === 100) {
+        count = 10;
+      } else {
+        count += 10;
+      }
+      time.innerText = count;
+    }, 500);
+  </script>
+</html>
