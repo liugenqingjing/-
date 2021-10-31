@@ -1,0 +1,51 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-22 12:22:24
+ * @LastEditTime: 2021-10-22 12:34:38
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ul 底下 li 索引值</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+  </body>
+  <script>
+    let ul_list = document.querySelectorAll("ul");
+    for (let i = 0; i < ul_list.length; i++) {
+      ul_list[i].addEventListener("click", (e) => {
+        let target = e.target;
+        if (target.tagName.toLowerCase() === "li") {
+          // let li_list = ul_list[i].getElementsByTagName("li");
+          let li_list = ul_list[i].querySelectorAll("li");
+          // getElementsByTagName⽅法获取到的元素列表不是数组，
+          // 和函数的arguments⼀样是⼀种类数组类型，不可以直接使⽤数组的⽅法
+          // let index = Array.prototype.indexOf.call(li_list, target);
+          let index = Array.from(li_list).indexOf(target);
+          console.log(index);
+          console.log(target);
+          console.log(li_list);
+        }
+      });
+    }
+  </script>
+</html>
