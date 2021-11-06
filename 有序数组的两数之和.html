@@ -1,0 +1,41 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-11-05 12:45:45
+ * @LastEditTime: 2021-11-05 13:01:23
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>有序数组的两数之和</title>
+  </head>
+  <body></body>
+  <script>
+    /**
+     * @description:
+     * @param  {number[]} nums
+     * @return {number[]}
+     */
+    var twoSum = function (arr, target) {
+      let left = 0,
+        right = arr.length - 1;
+      while (left < right) {
+        let temp = arr[left] + arr[right];
+        if (temp === target) {
+          return [left, right];
+        } else if (target < temp) {
+          right--;
+        } else {
+          left++;
+        }
+      }
+    };
+    let arr = [1, 2, 3, 4, 5];
+    let target = 6;
+    console.log(twoSum(arr, target));
+  </script>
+</html>

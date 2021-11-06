@@ -1,0 +1,65 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-11-05 13:52:28
+ * @LastEditTime: 2021-11-06 09:53:08
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NumberStack</title>
+  </head>
+  <body></body>
+  <script>
+    function NumberStack() {
+      this.stack = []; //存储栈
+      this.maxStack = []; //辅助栈，从小到大的顺序
+    }
+
+    NumberStack.prototype.push = function (num) {
+      if (typeof num !== "number") return false;
+      this.stack.push(num);
+      if (!this.maxStack.length) {
+        this.maxStack.push(num);
+      } else {
+        let len = this.maxStack.length;
+        for (let i = 0; i < len; i++) {
+          if (num < this.maxStack[i]) {
+            this.maxStack.splice(i, 0, num);
+            break;
+          }
+        }
+      }
+    };
+
+    NumberStack.prototype.pop = function () {
+      let num = this.stack.pop();
+      let index = this.maxStack.indexOf(num);
+      if (index !== -1) {
+        this.maxStack.splice(index, 1);
+      }
+    };
+
+    NumberStack.prototype.maxN = function (n) {
+      if (n < 1 || n > this.maxStack.length) return false;
+      return this.maxStack[this.maxStack.length - n];
+    };
+
+    let numberStack = new NumberStack();
+    numberStack.push(10);
+    numberStack.push(2);
+    numberStack.push(5);
+    numberStack.push(1);
+
+    numberStack.pop();
+
+    console.log(numberStack.maxN(1));
+    console.log(numberStack.maxN(2));
+
+    console.log(numberStack);
+  </script>
+</html>

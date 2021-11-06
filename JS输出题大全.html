@@ -1,0 +1,107 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-10-31 20:51:56
+ * @LastEditTime: 2021-10-31 21:27:24
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS输出题大全</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. 暂时性死区
+    // let a = 0;
+    // console.log(a);
+    // console.log(b);
+    // let b = 0;
+    // console.log(c);
+    // function c() {}
+
+    //2. this指向问题
+    // var a = [1, 2, 3, 4];
+    // function set(a) {
+    //   a = [5, 6, 7, 8];
+    //   console.log(this.a);
+    // }
+    // set(a);
+    // console.log(a);
+    // ------------------------------
+    // var name = "123";
+    // var obj = {
+    //   name: "456",
+    //   getName: function () {
+    //     let printName = function () {
+    //       console.log(this.name);
+    //     };
+    //     printName();
+    //   },
+    // };
+    // obj.getName();
+    // ------------------------------
+    // 更改使上述代码输出456（使用箭头函数）
+    // var name = "123";
+    // var obj = {
+    //   name: "456",
+    //   getName: function () {
+    //     let printName = () => {
+    //       console.log(this.name);
+    //     };
+    //     printName();
+    //   },
+    // };
+    // obj.getName();
+    // --------------------------------
+    //更改使上述代码输出456 （手动保存this）
+    // var name = "123";
+    // var obj = {
+    //   name: "456",
+    //   getName: function () {
+    //     let self = this;
+    //     let printName = function () {
+    //       console.log(self.name);
+    //     };
+    //     printName();
+    //   },
+    // };
+    // obj.getName();
+    // -------------------------------
+    //更改使上述代码输出456 （使用call）
+    // var name = "123";
+    // var obj = {
+    //   name: "456",
+    //   getName: function () {
+    //     function printName() {
+    //       console.log(this.name);
+    //     }
+    //     printName.call(this);
+    //   },
+    // };
+    // obj.getName();
+
+    // 3. 判断输出
+    // console.log(0);
+    // setTimeout(() => {
+    //   console.log(1);
+    // });
+    // var data = {};
+    // for (var i = 0; i < 10; i++) {
+    //   data[i] = function () {
+    //     console.log(i);
+    //   };
+    // }
+    // var p = new Promise((res, rej) => {
+    //   console.log(2);
+    //   res(3);
+    // });
+    // p.then((data) => {
+    //   console.log(data);
+    // });
+    // console.log(data[8]());
+  </script>
+</html>

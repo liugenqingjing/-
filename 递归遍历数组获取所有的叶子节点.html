@@ -1,0 +1,33 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-11-04 19:56:32
+ * @LastEditTime: 2021-11-04 20:01:41
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>递归遍历数组获取所有的叶子节点</title>
+  </head>
+  <body></body>
+  <script>
+    // js递归遍历数组获取所有的叶子节点
+    let arr = [];
+    function queryList(json, arr) {
+      for (var i = 0; i < json.length; i++) {
+        var sonList = json[i].sonList;
+        if (sonList.length == 0) {
+          arr.push(json[i]);
+        } else {
+          queryList(sonList, arr);
+        }
+      }
+      return arr;
+    }
+    queryList();
+  </script>
+</html>
