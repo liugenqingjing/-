@@ -1,0 +1,60 @@
+<!--
+ * @Description: 
+ * @Author: 小何
+ * @Date: 2021-11-06 10:09:40
+ * @LastEditTime: 2021-11-06 10:47:34
+ * @LastEditors:  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>实现⼀个 sleep 函数</title>
+  </head>
+  <body></body>
+  <script>
+    /* 实现⼀个 sleep 函数，⽐如 sleep(1000) 意味着等待1000毫秒，可从 Promise、Generator、Async/Await 等⻆度实现 */
+
+    /* 方法一: Promise */
+    let sleep = (time) => {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    };
+    sleep(1000).then(() => {
+      console.log("1秒后执行");
+    });
+
+    /* 方法二: Generator */
+    function* generatorSleep(time) {
+      yield new Promise((resolve) => setTimeout(resolve, time));
+    }
+    generatorSleep(1000)
+      .next()
+      .value.then(() => {
+        console.log("generator实现方式");
+      });
+
+    /* 方法三: Async/Await */
+    let sleepA = (time) => {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    };
+    async function foo() {
+      let out = await sleepA(1000);
+      console.log("async/await实现方法");
+      return out;
+    }
+    foo();
+
+    /* ES5 实现方式 */
+    let sleepES5 = (callback, time) => {
+      if (typeof callback === "function") {
+        setTimeout(callback, time);
+      }
+    };
+    let fun = () => {
+      console.log("ES5实现方法");
+    };
+    sleepES5(fun, 1000);
+  </script>
+</html>
